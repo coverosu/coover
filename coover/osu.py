@@ -137,7 +137,7 @@ class OsuAPIWrapper:
 		beatmap =  Beatmap(_beatmap.text)
 		beatmap.parse()
 		beatmap_total_objects = len(beatmap.hit_objects)
-		return round(totalhits / beatmap_total_objects * 100, 2)
+		return totalhits / beatmap_total_objects * 100
 
 	def get_beatmap(self, map_or_set_id: int, mode: int = 0, is_set: bool = False):
 		"""
@@ -273,7 +273,7 @@ class OsuAPIWrapper:
 			'count_300': stats['count300'],
 			'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 			'count_miss': stats['countmiss'],
-			'enabled_mods': repr(Mods(stats['enabled_mods'])),
+			'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 			'intmods': int(stats['enabled_mods']),
 			'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 			'accuracy': acc,
@@ -529,7 +529,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['countmiss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['enabled_mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'map_completed': stats['complete'],
@@ -571,7 +571,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
@@ -613,7 +613,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
@@ -656,7 +656,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['ranking']] if GRADE_URLS else stats['ranking'],
 				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
@@ -730,7 +730,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['countmiss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['enabled_mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': acc,
@@ -771,7 +771,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': float(stats['accuracy']),
@@ -812,7 +812,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else 0.0,
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': float(stats['accuracy']),
 				'intmods': int(stats['mods']),
@@ -852,7 +852,7 @@ class OsuAPIWrapper:
 				'count_300': stats['count_300'],
 				'pp': float(stats['pp']) if stats['pp'] != '0' else stats['pp'],
 				'count_miss': stats['count_miss'],
-				'enabled_mods': repr(Mods(stats['enabled_mods'])),
+				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['ranking']] if GRADE_URLS else stats['ranking'],
 				'accuracy': float(stats['accuracy']),
