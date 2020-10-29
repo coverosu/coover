@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name="coover",
-	version="0.0.6",
+	version="0.0.7",
 	author="coverosu",
 	author_email=config.email, # cringe!
 	description="Using this package for code that I tend to rewrite a lot",
