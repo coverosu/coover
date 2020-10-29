@@ -1,0 +1,7 @@
+__pycache__/
+build/
+coover.egg-info/
+dist/
+config.py
+*.txt
+*.sh
