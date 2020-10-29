@@ -285,7 +285,7 @@ class OsuAPIWrapper:
 			user_id = user
 		else:
 			# user is a name
-			p = self.profile(user)
+			p = self.profile(user, server_name=server_name.name.lower())
 			if not p:
 				return
 
@@ -631,7 +631,7 @@ class OsuAPIWrapper:
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'map_completed': stats['complete'],
 				'accuracy': acc,
-				'avatar_url': "https://s.ppy.sh/a/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://s.ppy.sh/a/" + str(self.profile(user, server_name=server_name.name.lower())['userid'])
 			}
 
 		elif server_name == Server.Akatsuki:
@@ -671,9 +671,9 @@ class OsuAPIWrapper:
 				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
-				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
+				'map_completed': self.map_completion_percentage(stats['beatmap']['beatmap_id'], (int(stats['count_50']) + int(stats['count_100']) + int(stats['count_300']) + int(stats['count_miss']))),
 				'accuracy': float(stats['accuracy']),
-				'avatar_url': "https://a.akatsuki.pw/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://a.akatsuki.pw/" + str(self.profile(user, server_name=server_name.name.lower())['userid'])
 			}
 
 		elif server_name == Server.Ripple:
@@ -713,15 +713,15 @@ class OsuAPIWrapper:
 				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
-				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
+				'map_completed': self.map_completion_percentage(stats['beatmap']['beatmap_id'], (int(stats['count_50']) + int(stats['count_100']) + int(stats['count_300']) + int(stats['count_miss']))),
 				'accuracy': float(stats['accuracy']),
-				'avatar_url': "https://a.ripple.moe/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://a.ripple.moe/" + str(self.profile(user, server_name=server_name.name.lower())['userid'])
 
 			}
 
 		elif server_name == Server.Gatari:
 			params = {
-				'id': self.profile(user)['userid'] if isinstance(user, str) else user,
+				'id': self.profile(user, server_name=server_name)['userid'] if isinstance(user, str) else user,
 				'mode': mode,
 				'f': 0
 			}
@@ -756,9 +756,9 @@ class OsuAPIWrapper:
 				'enabled_mods': repr(Mods(int(stats['enabled_mods']))),
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['ranking']] if GRADE_URLS else stats['ranking'],
-				'map_completed': 'No' if stats['completed'] == 0 else 'Yes',
+				'map_completed': self.map_completion_percentage(stats['beatmap']['beatmap_id'], (int(stats['count_50']) + int(stats['count_100']) + int(stats['count_300']) + int(stats['count_miss']))),
 				'accuracy': float(stats['accuracy']),
-				'avatar_url': f"https://a.gatari.pw/{str(self.profile(user)['userid'])}"
+				'avatar_url': f"https://a.gatari.pw/{str(self.profile(user, server_name=server_name.name.lower())['userid'])}"
 			}
 
 	def best_score(self, user: Union[str, int], mode: int = 0,
@@ -831,7 +831,7 @@ class OsuAPIWrapper:
 				'intmods': int(stats['enabled_mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': acc,
-				'avatar_url': "https://s.ppy.sh/a/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://s.ppy.sh/a/" + str(self.profile(user,server_name=server_name.name.lower())['userid'])
 			}
 
 		elif server_name == Server.Akatsuki:
@@ -872,7 +872,7 @@ class OsuAPIWrapper:
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': float(stats['accuracy']),
-				'avatar_url': "https://a.akatsuki.pw/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://a.akatsuki.pw/" + str(self.profile(user, server_name=server_name.name.lower())['userid'])
 			}
 
 		elif server_name == Server.Ripple:
@@ -913,12 +913,12 @@ class OsuAPIWrapper:
 				'rank': GRADE_URLS[stats['rank']] if GRADE_URLS else stats['rank'],
 				'accuracy': float(stats['accuracy']),
 				'intmods': int(stats['mods']),
-				'avatar_url': "https://a.ripple.moe/" + str(self.profile(user)['userid'])
+				'avatar_url': "https://a.ripple.moe/" + str(self.profile(user, server_name=server_name.name.lower())['userid'])
 			}
 
 		elif server_name == Server.Gatari:
 			params = {
-				'id': self.profile(user)['userid'] if isinstance(user, str) else user,
+				'id': self.profile(user, server_name=server_name)['userid'] if isinstance(user, str) else user,
 				'mode': mode,
 			}
 
@@ -953,5 +953,5 @@ class OsuAPIWrapper:
 				'intmods': int(stats['mods']),
 				'rank': GRADE_URLS[stats['ranking']] if GRADE_URLS else stats['ranking'],
 				'accuracy': float(stats['accuracy']),
-				'avatar_url': f"https://a.gatari.pw/{str(self.profile(user)['userid'])}"
+				'avatar_url': f"https://a.gatari.pw/{str(self.profile(user, server_name=server_name.name.lower())['userid'])}"
 			}
