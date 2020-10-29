@@ -8,7 +8,7 @@ setuptools.setup(
 	name="coover",
 	version="0.0.7",
 	author="coverosu",
-	author_email=config.email, # cringe!
+	author_email=config.email,
 	description="Using this package for code that I tend to rewrite a lot",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
