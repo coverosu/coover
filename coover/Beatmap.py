@@ -1,4 +1,11 @@
-from enumm import *
+from enum import *
+
+@unique
+class GameMode(Enum):
+	Standard = 0
+	Taiko = 1
+	Ctb = 2
+	Mania = 3
 
 class Beatmap():
 

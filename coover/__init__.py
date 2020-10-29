@@ -11,5 +11,4 @@ __version__ = '0.1'
 
 from .osu import *
 from .Beatmap import *
-from .enumm import *
 from .OsuApiV2 import *
