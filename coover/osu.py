@@ -2,7 +2,7 @@ from typing import Union, Set, Tuple
 import requests
 import re
 from collections import defaultdict
-from coover import Beatmap
+from .Beatmap import Beatmap
 from enum import *
 
 @unique
@@ -119,7 +119,8 @@ GRADE_URLS = {
 	'A': 'https://cdn.discordapp.com/emojis/724841194517037137.png?v=1',
 	'B': 'https://cdn.discordapp.com/emojis/724841229602521109.png?v=1',
 	'C': 'https://cdn.discordapp.com/emojis/724841244530049095.png?v=1',
-	'D': 'https://cdn.discordapp.com/emojis/724841263727116379.png?v=1'
+	'D': 'https://cdn.discordapp.com/emojis/724841263727116379.png?v=1',
+	'F': 'https://cdn.discordapp.com/emojis/724841280772898906.png?v=1'
 }
 
 def calc_acc(mode: int, n300: int, n100: int, n50: int,
