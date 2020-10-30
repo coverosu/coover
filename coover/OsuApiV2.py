@@ -1,6 +1,6 @@
 import requests
 import asyncio
-#test
+
 class OsuApiV2Wrapper():
 	def __init__(self, client_id: int, client_secret: str) -> None:
 		self.client_id = client_id
