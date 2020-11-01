@@ -1,5 +1,5 @@
 """\
-This package is mainly for my use, but if you decide to use it go right ahead!
+This package is mainly for people who want to code with python around osu, but doesn't want to write anything
 Using this packag for code that I tend to rewrite a lot such as `requests` type code.
 """
 
