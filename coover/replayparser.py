@@ -92,7 +92,7 @@ class Replay:
 		self.barGraph = None
 		self.timestamp = None
 		self.scoreid = None
-		self.addddddddddmoddddddddddd= None
+		self.additional_mods= None
 		self.frames = None
 		self.parse()
 	
