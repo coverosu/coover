@@ -86,7 +86,7 @@ class OsuApiV2Wrapper():
 								include_fails: int = 1, 
 								type: str = 'best') -> dict:
 		await self.get_access_token()
-		params = {} # ONE DAY!!!
+		#params = {} ONE DAY!!!
 		url = f'https://osu.ppy.sh/api/v2' \
 			  f'/beatmaps/{mapid}/scores'
 		req = self.sess.get(url, headers=self.headers) #params=params

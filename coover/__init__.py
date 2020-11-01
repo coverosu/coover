@@ -9,6 +9,7 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2020 coverosu'
 __version__ = '0.1'
 
-from .osu import *
+from .OsuAPIWrapper import *
 from .Beatmap import *
 from .OsuApiV2 import *
+from .replayparser import *
