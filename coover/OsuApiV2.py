@@ -10,10 +10,10 @@ class OsuApiV2Wrapper():
 		self.token_info = None
 		asyncio.run(self.get_access_token()) 
 
-	async def __enter__(self):
+	async def __enter__(self, *args):
 		return self
 
-	async def __exit__(self):
+	async def __exit__(self, *args):
 		return self.sess.close()
 
 	async def get_access_token(self):
