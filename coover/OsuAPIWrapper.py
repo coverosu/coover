@@ -54,15 +54,19 @@ class OsuAPIWrapper:
 		self.api_key = api_key
 		self.http_sess = requests.Session()
 
-	def __enter__(self):
+	def __enter__(self, *args):
 		return self
 
-	def __exit__(self):
+	def __exit__(self, *args):
 		self.http_sess.close()
 
 	@staticmethod
 	def resolve(server_name: str) -> Server:
 		# resolve a server by it's name.
+		try:
+			server_name = server_name.name
+		except:
+			pass
 		return defaultdict(lambda: None, {
 			'bancho': Server.Bancho,
 			'akatsuki': Server.Akatsuki,
